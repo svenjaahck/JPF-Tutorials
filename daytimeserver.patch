@@ -1,0 +1,23 @@
+--- DaytimeServerNoPatch.java	2022-05-12 10:18:43.830062888 +0200
++++ DaytimeServer.java	2022-05-11 14:06:39.546802919 +0200
+@@ -5,8 +5,8 @@
+ 
+ import java.io.IOException;
+ import java.io.OutputStreamWriter;
+-import java.net.ServerSocket;
+-import java.net.Socket;
++import env.java.net.ServerSocket;
++import env.java.net.Socket;
+ import java.util.Date;
+ 
+ public class DaytimeServer {
+@@ -33,7 +33,9 @@
+     }
+     finally {
+       try {
++        if (connection != null) {
+         connection.close();
++      }
+ 	server.close();
+       }
+       catch(IOException e) {
