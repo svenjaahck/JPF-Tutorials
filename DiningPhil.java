@@ -55,7 +55,7 @@ public class DiningPhil {
 
       if (i == 0) {
                 
-                // The last philosopher picks up the right fork first
+                // the first philosopher picks up the right fork first
                 new Philosopher(forks[(i + 1) % N], forks[i]); 
             } else {
                 new Philosopher(forks[i], forks[(i + 1) % N]);
