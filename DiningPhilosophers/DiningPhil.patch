@@ -1,0 +1,24 @@
+--- DiningPhil.java	2016-08-17 14:18:13.000000000 +0200
++++ DiningPhil2.java	2022-05-12 10:24:44.000000000 +0200
+@@ -1,4 +1,3 @@
+-
+ //
+ // Copyright (C) 2006 United States Government as represented by the
+ // Administrator of the National Aeronautics and Space Administration
+@@ -52,7 +51,15 @@
+       forks[i] = new Fork();
+     }
+     for (int i = 0; i < N; i++) {
+-      new Philosopher(forks[i], forks[(i + 1) % N]);
++
++      if (i == 0) {
++                
++                // the first philosopher picks up the right fork first
++                new Philosopher(forks[(i + 1) % N], forks[i]); 
++            } else {
++                new Philosopher(forks[i], forks[(i + 1) % N]);
++            }
++      
+     }
+   }
+ }
