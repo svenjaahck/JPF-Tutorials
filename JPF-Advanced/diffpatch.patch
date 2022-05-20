@@ -1,0 +1,26 @@
+--- Downloader_copy.java	2022-05-18 12:02:51.914014591 +0200
++++ Downloader.java	2022-05-18 12:02:40.510730131 +0200
+@@ -114,8 +114,10 @@
+ 			end = length;
+ 		}
+ 		getData(is, start, end, true);
+-		main_finished = true;
+-		System.out.println("Main download finished.");
++		synchronized(output){
++			main_finished = true;
++			System.out.println("Main download finished.");
++		}
+ 	}
+ 
+ 	public void launchDL(int length) {
+@@ -138,7 +140,9 @@
+ 		System.out.println("Worker: Download from " + start + " to " + end);
+ 		connect();
+ 		getData(is, start, end, false);
+-		downloaders--;
++		synchronized (output) {
++			downloaders--;
++		}
+ 		if (downloaders == 0) { // workers finished
+ 			System.out.println("Workers finished.");
+ 			synchronized (output) {
